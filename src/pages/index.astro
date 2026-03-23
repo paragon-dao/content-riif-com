@@ -58,7 +58,7 @@ const jsonLd = {
               {post.data.paper_url && (
                 <>
                   <span>&middot;</span>
-                  <span class="text-teal-600 font-medium">Peer-reviewed</span>
+                  <a href={post.data.paper_url} target="_blank" rel="noopener" class="text-teal-600 font-medium hover:underline">Published on ResearchGate</a>
                 </>
               )}
             </div>

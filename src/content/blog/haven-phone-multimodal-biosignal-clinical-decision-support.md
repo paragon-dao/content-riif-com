@@ -60,6 +60,9 @@ The consequence of inadequate triage tools is a two-sided failure: patients who 
 
 Common barriers include: unreliable electricity, intermittent internet connectivity, noisy clinical environments, high patient volumes, and device maintenance challenges. Any tool designed for these settings must function offline, require no special hardware beyond a smartphone, and add minimal time to the clinical encounter.
 
+![Figure 1: Haven Phone System Architecture — data flow from patient breathing capture through GLE encoding to clinical decision support output.](/figures/fig1_architecture.png)
+*Figure 1. Haven Phone system architecture. Patient breathing audio is captured via smartphone microphone, encoded using the GLE framework, and classified by task-specific heads. The system returns a triage recommendation within 3 seconds.*
+
 ---
 
 ## 3. General Learning Encoder (GLE) Architecture
@@ -83,6 +86,9 @@ The GLE encoding pipeline transforms a raw biosignal into a compact frequency-do
 **Stage 2: DCT-II Transformation.** Each conditioned frame is transformed using the Discrete Cosine Transform Type II. The first 128 coefficients are retained, capturing the dominant spectral structure while discarding high-frequency noise. This 128-dimensional vector constitutes the GLE encoding.
 
 **Stage 3: Feature Augmentation.** For respiratory analysis, the 128 DCT-II coefficients are augmented with 16 domain-specific breathing metrics (breaths per minute, inspiratory/expiratory ratio, rhythm regularity, amplitude variance), producing a 144-dimensional input vector.
+
+![Figure 2: GLE Encoding Pipeline — four stages from raw audio waveform to compact 512-byte DCT-II coefficient vector.](/figures/fig2_gle_pipeline.png)
+*Figure 2. GLE encoding pipeline. Raw breathing audio is conditioned, transformed via DCT-II, and augmented with domain-specific metrics to produce a 144-dimensional input vector.*
 
 ### Classification Architecture
 
@@ -133,6 +139,12 @@ All validation was conducted on publicly available datasets and benchmarks. No p
 
 The high precision on normal-class classification (98.3%) is clinically important: it minimizes false alarms that would erode health worker trust.
 
+![Figure 3: Confusion matrix for respiratory pattern classification showing per-class prediction accuracy across Deep, Normal, Breath-hold, and Shallow classes.](/figures/fig3_confusion_matrix.png)
+*Figure 3. Confusion matrix for 4-class respiratory pattern classification (n=2,693 test samples). The shallow breathing class shows 62.4% recall — the primary limitation motivating the Consensus of Signals architecture.*
+
+![Figure 5: Per-class precision, recall, and F1-score for respiratory pattern classification.](/figures/fig5_per_class.png)
+*Figure 4. Per-class precision, recall, and F1-score. Normal class achieves 98.3% precision; shallow breathing recall of 62.4% represents the critical gap addressed by multi-signal fusion.*
+
 ### Voice Distress Detection
 
 **Dataset:** ~15,000 samples from RAVDESS (24 professional actors) and CREMA-D (91 actors across diverse backgrounds), plus augmented samples.
@@ -172,6 +184,9 @@ Separately, the same GLE encoder achieves **97.65% classification accuracy** on 
 | Neural (EEG) | 5-class motor imagery | Accuracy: **97.65%** | EEG headset | Subject-level |
 
 *\*Trained on acted speech; validity for clinical distress detection not established.*
+
+![Figure 4: Cross-modal performance comparison showing benchmark results across respiratory, voice, and neural signal modalities.](/figures/fig4_cross_modal.png)
+*Figure 5. Cross-modal benchmark performance. All three modalities use the shared GLE DCT-II encoding front-end. Respiratory and voice analysis require only a smartphone microphone; EEG requires a dedicated headset.*
 
 ---
 
