@@ -12,30 +12,30 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 >
   <nav class="border-b border-slate-100 px-4 py-3 sticky top-0 z-40 bg-white/95 backdrop-blur-sm">
     <div class="max-w-3xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-lg font-bold text-slate-800">RIIF</a>
-      <div class="flex items-center gap-4 text-sm">
+      <a href="/" class="flex items-center"><img src="/riif-logo.svg" alt="RIIF" class="h-7" /></a>
+      <div class="flex items-center gap-5 text-base">
         <a href="/blog" class="text-teal-600 font-medium">Articles</a>
         <a href="https://riif.com" class="text-slate-500 hover:text-slate-800">riif.com</a>
       </div>
     </div>
   </nav>
 
-  <main class="max-w-3xl mx-auto px-4 py-12">
+  <main class="max-w-3xl mx-auto px-5 py-12">
     <h1 class="text-3xl font-bold text-slate-800 mb-2">Articles</h1>
-    <p class="text-slate-500 mb-10">Research, documentation, and technical writing.</p>
+    <p class="text-lg text-slate-500 mb-10">Research, documentation, and technical writing.</p>
 
-    <div class="space-y-8">
+    <div class="space-y-6">
       {posts.map((post) => (
         <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="block group">
-          <article class="border border-slate-200 rounded-xl p-6 hover:border-teal-200 hover:shadow-sm transition-all">
+          <article class="border border-slate-200 rounded-2xl p-6 hover:border-teal-200 hover:shadow-md transition-all">
             <div class="flex flex-wrap items-center gap-2 mb-3">
               {post.data.tags.map((tag) => (
-                <span class="text-xs font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full">{tag}</span>
+                <span class="text-sm font-medium text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">{tag}</span>
               ))}
             </div>
-            <h2 class="text-xl font-bold text-slate-800 group-hover:text-teal-600 transition-colors mb-2">{post.data.title}</h2>
-            <p class="text-slate-500 text-sm mb-3">{post.data.description}</p>
-            <div class="flex items-center gap-3 text-xs text-slate-400">
+            <h2 class="text-2xl font-bold text-slate-800 group-hover:text-teal-600 transition-colors mb-2">{post.data.title}</h2>
+            <p class="text-slate-500 text-base mb-3 leading-relaxed">{post.data.description}</p>
+            <div class="flex items-center gap-3 text-sm text-slate-400">
               <span>{post.data.author}</span>
               <span>&middot;</span>
               <time datetime={post.data.date}>
@@ -48,14 +48,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </main>
 
-  <footer class="border-t border-slate-100 px-4 py-8">
+  <footer class="border-t border-slate-100 px-5 py-10">
     <div class="max-w-3xl mx-auto text-center">
-      <div class="flex justify-center gap-4 text-xs text-slate-400 mb-3">
+      <div class="flex justify-center gap-5 text-sm text-slate-400 mb-3">
         <a href="https://haven.riif.com" class="hover:text-slate-600">Haven Phone</a>
         <a href="https://paragondao.org" class="hover:text-slate-600">ParagonDAO</a>
         <a href="https://riif.com" class="hover:text-slate-600">RIIF</a>
       </div>
-      <p class="text-xs text-slate-400">Univault Technologies LLC &middot; Salt Lake City, Utah</p>
+      <p class="text-sm text-slate-400">Univault Technologies LLC &middot; Salt Lake City, Utah</p>
     </div>
   </footer>
 </BaseLayout>

@@ -1,0 +1,9 @@
+<svg width="90" height="36" viewBox="0 0 90 36" xmlns="http://www.w3.org/2000/svg" aria-label="RIIF">
+  <!-- R — Blue, bold sans-serif -->
+  <text x="0" y="26.6" fill="#3498db" font-size="28" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800">R</text>
+  <!-- II — Amber pause bars -->
+  <rect x="31.4" y="6.44" width="6" height="20.16" rx="0.72" fill="#d4a843"/>
+  <rect x="42.4" y="6.44" width="6" height="20.16" rx="0.72" fill="#d4a843"/>
+  <!-- F — Red, bold sans-serif -->
+  <text x="62.7" y="26.6" fill="#e74c3c" font-size="28" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800">F</text>
+</svg>

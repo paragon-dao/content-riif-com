@@ -21,9 +21,14 @@ const projectLinks: Record<string, { name: string; url: string }> = {
 
 const projectInfo = project ? projectLinks[project] : null
 
+// Parse author string: "Name1 & Name2 — Affiliation"
+const authorParts = author.split('—').map(s => s.trim())
+const authorNames = authorParts[0] || author
+const affiliation = authorParts[1] || ''
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
+  '@type': 'ScholarlyArticle',
   headline: title,
   description,
   datePublished: date,
@@ -46,69 +51,337 @@ const jsonLd = {
   ogDescription={description}
   jsonLd={jsonLd}
 >
-  <nav class="border-b border-slate-100 px-4 py-3 sticky top-0 z-40 bg-white/95 backdrop-blur-sm">
-    <div class="max-w-3xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-lg font-bold text-slate-800">RIIF</a>
-      <div class="flex items-center gap-4 text-sm">
-        <a href="/blog" class="text-slate-500 hover:text-slate-800">Articles</a>
-        <a href="https://riif.com" class="text-slate-500 hover:text-slate-800">riif.com</a>
+  <!-- Minimal nav — academic papers don't have heavy navigation -->
+  <nav class="border-b border-slate-200 px-4 py-3 sticky top-0 z-40 bg-white/95 backdrop-blur-sm">
+    <div class="max-w-[52rem] mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center"><img src="/riif-logo.svg" alt="RIIF" class="h-7" /></a>
+      <div class="flex items-center gap-5 text-base">
+        <a href="/blog" class="text-slate-500 hover:text-slate-800 transition-colors">Articles</a>
+        <a href="https://riif.com" class="text-slate-500 hover:text-slate-800 transition-colors">riif.com</a>
       </div>
     </div>
   </nav>
 
-  <article class="max-w-3xl mx-auto px-4 py-12">
-    <header class="mb-10">
-      <div class="flex flex-wrap items-center gap-2 mb-4">
+  <article class="academic-article max-w-[52rem] mx-auto px-5 py-12 md:py-16">
+    <!-- Title block — LaTeX-style centered title -->
+    <header class="text-center mb-10 pb-8 border-b border-slate-200">
+      <!-- Tags as subject classification -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-5">
         {tags.map((tag) => (
-          <span class="text-xs font-medium text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">{tag}</span>
+          <span class="text-xs font-semibold tracking-wider uppercase text-slate-400">{tag}</span>
         ))}
+        {tags.length > 1 && <span class="text-slate-300">|</span>}
         {projectInfo && (
-          <a href={projectInfo.url} class="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full hover:bg-slate-200 transition-colors">
+          <a href={projectInfo.url} class="text-xs font-semibold tracking-wider uppercase text-teal-600 hover:text-teal-700 transition-colors">
             {projectInfo.name} &rarr;
           </a>
         )}
       </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4 leading-tight">{title}</h1>
-      <p class="text-lg text-slate-500 mb-4">{description}</p>
-      <div class="flex flex-wrap items-center gap-3 text-sm text-slate-400">
-        <span>{author}</span>
-        <span>&middot;</span>
+
+      <!-- Title — serif, large, tight leading like a journal -->
+      <h1 class="article-title text-2xl md:text-[1.85rem] leading-snug font-bold text-slate-900 mb-6 max-w-2xl mx-auto">
+        {title}
+      </h1>
+
+      <!-- Authors — academic format -->
+      <div class="mb-2">
+        <p class="text-base text-slate-700 font-medium">{authorNames}</p>
+        {affiliation && (
+          <p class="text-sm text-slate-500 italic mt-1">{affiliation}</p>
+        )}
+      </div>
+
+      <!-- Date + external paper link -->
+      <div class="flex flex-wrap items-center justify-center gap-3 text-sm text-slate-400 mt-3">
         <time datetime={date}>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
         {paper_url && (
           <>
             <span>&middot;</span>
-            <a href={paper_url} target="_blank" rel="noopener" class="text-teal-600 hover:underline">Read on ResearchGate</a>
+            <a href={paper_url} target="_blank" rel="noopener" class="text-teal-600 hover:underline">
+              Full paper on ResearchGate &nearr;
+            </a>
           </>
         )}
       </div>
     </header>
 
-    <div class="prose prose-slate prose-lg max-w-none
-      prose-headings:text-slate-800 prose-headings:font-bold
-      prose-p:text-slate-600 prose-p:leading-relaxed
-      prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline
-      prose-strong:text-slate-800
-      prose-ul:text-slate-600 prose-ol:text-slate-600
-      prose-blockquote:border-teal-500 prose-blockquote:text-slate-500
-      prose-table:text-sm
-      prose-th:text-left prose-th:font-semibold prose-th:text-slate-700
-      prose-td:text-slate-600
-      prose-code:text-teal-700 prose-code:bg-teal-50 prose-code:px-1 prose-code:rounded
-    ">
+    <!-- Abstract / Description -->
+    <div class="abstract-block bg-slate-50 border-l-4 border-slate-300 rounded-r-lg px-5 py-4 mb-10">
+      <p class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Abstract</p>
+      <p class="text-base text-slate-600 leading-relaxed italic">{description}</p>
+    </div>
+
+    <!-- Article body — academic prose styling -->
+    <div class="article-body">
       <slot />
     </div>
   </article>
 
-  <footer class="border-t border-slate-100 px-4 py-8 mt-12">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="flex justify-center gap-4 text-xs text-slate-400 mb-3">
-        <a href="/blog" class="hover:text-slate-600">Articles</a>
-        <a href="https://haven.riif.com" class="hover:text-slate-600">Haven Phone</a>
-        <a href="https://paragondao.org" class="hover:text-slate-600">ParagonDAO</a>
-        <a href="https://riif.com" class="hover:text-slate-600">RIIF</a>
+  <footer class="border-t border-slate-200 px-5 py-10 mt-8">
+    <div class="max-w-[52rem] mx-auto text-center">
+      <div class="flex justify-center gap-5 text-sm text-slate-400 mb-3">
+        <a href="/blog" class="hover:text-slate-600 transition-colors">Articles</a>
+        <a href="https://haven.riif.com" class="hover:text-slate-600 transition-colors">Haven Phone</a>
+        <a href="https://paragondao.org" class="hover:text-slate-600 transition-colors">ParagonDAO</a>
+        <a href="https://riif.com" class="hover:text-slate-600 transition-colors">RIIF</a>
       </div>
-      <p class="text-xs text-slate-400">Univault Technologies LLC &middot; Salt Lake City, Utah</p>
-      <p class="text-xs text-slate-300 mt-1">Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="hover:text-slate-500">CC BY 4.0</a></p>
+      <p class="text-sm text-slate-400">Univault Technologies LLC &middot; Salt Lake City, Utah</p>
+      <p class="text-sm text-slate-300 mt-1">Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="hover:text-slate-500">CC BY 4.0</a></p>
     </div>
   </footer>
 </BaseLayout>
+
+<style is:global>
+  /* ═══════════════════════════════════════════════════════════
+     Academic Article Styling — LaTeX-inspired web typography
+     ═══════════════════════════════════════════════════════════ */
+
+  .academic-article {
+    font-family: 'Georgia', 'Times New Roman', 'Palatino Linotype', 'Book Antiqua', serif;
+    color: #1e293b;
+  }
+
+  /* Title — Computer Modern / Palatino feel */
+  .article-title {
+    font-family: 'Georgia', 'Palatino Linotype', 'Book Antiqua', serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* Abstract block */
+  .abstract-block {
+    font-family: 'Georgia', 'Palatino Linotype', serif;
+  }
+
+  .abstract-block p:first-child {
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+
+  /* ── Body text ── */
+  .article-body {
+    font-size: 1.0625rem; /* 17px — slightly larger than default for readability */
+    line-height: 1.75;
+    color: #334155;
+  }
+
+  .article-body p {
+    margin-bottom: 1em;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  /* ── Headings — serif, numbered feel ── */
+  .article-body h2 {
+    font-family: 'Georgia', 'Palatino Linotype', serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid #e2e8f0;
+    letter-spacing: -0.01em;
+  }
+
+  .article-body h3 {
+    font-family: 'Georgia', 'Palatino Linotype', serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    font-style: italic;
+  }
+
+  .article-body h4 {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Links ── */
+  .article-body a {
+    color: #0d9488;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .article-body a:hover {
+    border-bottom-color: #0d9488;
+  }
+
+  /* ── Strong emphasis ── */
+  .article-body strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  /* ── Blockquotes — styled as formal note/disclaimer boxes ── */
+  .article-body blockquote {
+    background: #f8fafc;
+    border-left: 3px solid #0d9488;
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5em 0;
+    font-size: 0.9375rem;
+    color: #475569;
+    font-style: normal;
+  }
+
+  .article-body blockquote p {
+    text-align: left;
+    margin-bottom: 0.5em;
+  }
+
+  .article-body blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Tables — academic three-line style (booktabs) ── */
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .article-body thead {
+    border-top: 2px solid #0f172a;
+    border-bottom: 1px solid #0f172a;
+  }
+
+  .article-body th {
+    text-align: left;
+    font-weight: 600;
+    color: #0f172a;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+  }
+
+  .article-body td {
+    padding: 0.5rem 0.75rem;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .article-body tbody tr:last-child td {
+    border-bottom: 2px solid #0f172a;
+  }
+
+  .article-body tbody tr:hover {
+    background: #f8fafc;
+  }
+
+  /* Bold values in table cells — highlight key metrics */
+  .article-body td strong {
+    color: #0f172a;
+  }
+
+  /* ── Lists ── */
+  .article-body ul {
+    list-style-type: disc;
+    padding-left: 1.75em;
+    margin: 1em 0;
+  }
+
+  .article-body ol {
+    list-style-type: decimal;
+    padding-left: 1.75em;
+    margin: 1em 0;
+  }
+
+  .article-body li {
+    margin-bottom: 0.4em;
+    padding-left: 0.25em;
+  }
+
+  .article-body li p {
+    margin-bottom: 0.25em;
+  }
+
+  /* ── Horizontal rules — section dividers ── */
+  .article-body hr {
+    border: none;
+    border-top: 1px solid #cbd5e1;
+    margin: 2.5em 0;
+  }
+
+  /* ── Code — monospace, subtle ── */
+  .article-body code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.875em;
+    background: #f1f5f9;
+    color: #0d9488;
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+  }
+
+  .article-body pre {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1.5em 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .article-body pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* ── Footnote-style asterisk notes ── */
+  .article-body em {
+    font-style: italic;
+    color: #475569;
+  }
+
+  /* ── First paragraph after a heading — no extra top margin ── */
+  .article-body h2 + p,
+  .article-body h3 + p {
+    margin-top: 0;
+  }
+
+  /* ── Print-friendly ── */
+  @media print {
+    .academic-article {
+      font-size: 11pt;
+      max-width: none;
+    }
+    nav, footer {
+      display: none;
+    }
+  }
+
+  /* ── Responsive — tighter on mobile ── */
+  @media (max-width: 640px) {
+    .article-body {
+      font-size: 1rem;
+    }
+    .article-body h2 {
+      font-size: 1.25rem;
+    }
+    .article-body p {
+      text-align: left;
+      hyphens: none;
+    }
+    .article-body table {
+      font-size: 0.8125rem;
+    }
+    .article-body th, .article-body td {
+      padding: 0.4rem 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,9 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- R — Blue -->
+  <text x="0" y="24" fill="#3498db" font-size="24" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-weight="800">R</text>
+  <!-- II — Amber bars (small, right of R) -->
+  <rect x="16" y="6" width="3" height="15" rx="0.5" fill="#d4a843"/>
+  <rect x="21" y="6" width="3" height="15" rx="0.5" fill="#d4a843"/>
+  <!-- F — Red (compact) -->
+  <text x="25" y="24" fill="#e74c3c" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-weight="800">F</text>
+</svg>
