@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'RIIF — Univault Technologies LLC',
+  url: 'https://riif.com',
+  description: 'Open health and environmental monitoring infrastructure. On-device biosignal processing using the General Learning Encoder (GLE).',
+}
+---
+
+<BaseLayout
+  title="RIIF — Research & Documentation"
+  description="Research, technical documentation, and articles from the RIIF ecosystem. Haven Phone, ParagonDAO, and the General Learning Encoder."
+  jsonLd={jsonLd}
+>
+  <nav class="border-b border-slate-100 px-4 py-3 sticky top-0 z-40 bg-white/95 backdrop-blur-sm">
+    <div class="max-w-3xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-lg font-bold text-slate-800">RIIF</a>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="/blog" class="text-slate-500 hover:text-slate-800">Articles</a>
+        <a href="https://riif.com" class="text-slate-500 hover:text-slate-800">riif.com</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-slate-800 mb-3">Research & Documentation</h1>
+    <p class="text-lg text-slate-500 mb-4">Technical articles from the RIIF ecosystem.</p>
+    <div class="flex flex-wrap gap-3 mb-12 text-sm">
+      <a href="https://haven.riif.com" class="text-teal-600 bg-teal-50 px-3 py-1.5 rounded-full hover:bg-teal-100 transition-colors">Haven Phone &rarr;</a>
+      <a href="https://paragondao.org" class="text-teal-600 bg-teal-50 px-3 py-1.5 rounded-full hover:bg-teal-100 transition-colors">ParagonDAO &rarr;</a>
+      <a href="https://riif.com" class="text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full hover:bg-slate-200 transition-colors">riif.com &rarr;</a>
+    </div>
+
+    <div class="space-y-8">
+      {posts.map((post) => (
+        <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="block group">
+          <article class="border border-slate-200 rounded-xl p-6 hover:border-teal-200 hover:shadow-sm transition-all">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              {post.data.tags.map((tag) => (
+                <span class="text-xs font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full">{tag}</span>
+              ))}
+            </div>
+            <h2 class="text-xl font-bold text-slate-800 group-hover:text-teal-600 transition-colors mb-2">{post.data.title}</h2>
+            <p class="text-slate-500 text-sm mb-3">{post.data.description}</p>
+            <div class="flex items-center gap-3 text-xs text-slate-400">
+              <span>{post.data.author}</span>
+              <span>&middot;</span>
+              <time datetime={post.data.date}>
+                {new Date(post.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              {post.data.paper_url && (
+                <>
+                  <span>&middot;</span>
+                  <span class="text-teal-600">Peer-reviewed</span>
+                </>
+              )}
+            </div>
+          </article>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-100 px-4 py-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs text-slate-400">Univault Technologies LLC &middot; Salt Lake City, Utah</p>
+      <p class="text-xs text-slate-300 mt-1">Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="hover:text-slate-500">CC BY 4.0</a></p>
+    </div>
+  </footer>
+</BaseLayout>

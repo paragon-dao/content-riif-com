@@ -1,0 +1,25 @@
+{
+  "name": "content-riif-com",
+  "version": "1.0.0",
+  "description": "Content hub for RIIF ecosystem — research, documentation, and technical articles. Deployed to content.riif.com via GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.3.0",
+    "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "license": "CC-BY-4.0",
+  "author": "Univault Technologies LLC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paragon-dao/content-riif-com"
+  }
+}

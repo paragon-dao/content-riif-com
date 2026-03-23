@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string
+  description?: string
+  ogTitle?: string
+  ogDescription?: string
+  ogUrl?: string
+  jsonLd?: object
+}
+
+const {
+  title,
+  description = 'Research, technical documentation, and articles from the RIIF ecosystem.',
+  ogTitle,
+  ogDescription,
+  ogUrl,
+  jsonLd,
+} = Astro.props
+
+const canonicalUrl = ogUrl || Astro.url.href
+const resolvedOgTitle = ogTitle || title
+const resolvedOgDesc = ogDescription || description
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDesc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="RIIF" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDesc} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+  <body class="bg-white text-slate-800">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
