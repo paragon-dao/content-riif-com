@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Univault Technologies — Pre-Seed"
+  description="Certifying AI fairness for healthcare — without exposing code or patient data. Raising $1.5M pre-seed."
+  ogTitle="Univault Technologies — Certifying AI Fairness for Healthcare"
+  ogDescription="A single architectural parameter controls AI fairness 21x more effectively than the industry standard. 7 patents. 5 papers. Platform live. Raising $1.5M."
+  ogUrl="https://content.riif.com/invest"
+>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    .inv { max-width: 780px; margin: 0 auto; padding: 36px 40px 28px; font-family: 'Inter', -apple-system, sans-serif; color: #1a1a2e; line-height: 1.55; }
+    .inv-header { text-align: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 2px solid #1a1a2e; }
+    .inv-header h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 5px; }
+    .inv-header .tagline { font-size: 15px; color: #4a5568; }
+    .inv-header .tagline em { font-style: normal; color: #1a1a2e; font-weight: 500; }
+    .inv-section { margin-bottom: 20px; }
+    .inv-section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; margin-bottom: 7px; }
+    .inv-section p { font-size: 16.5px; color: #374151; margin-bottom: 7px; }
+    .inv-section p strong { color: #1a1a2e; }
+    .inv-callout { background: #f8fafc; border-left: 3px solid #1a1a2e; padding: 12px 16px; margin: 10px 0; font-size: 15.5px; }
+    .inv-callout .number { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+    .inv table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 14.5px; }
+    .inv th { text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: #6b7280; padding: 6px 10px; border-bottom: 2px solid #e5e7eb; }
+    .inv td { padding: 7px 10px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+    .inv td strong { color: #1a1a2e; }
+    .traction-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; margin: 8px 0; }
+    .traction-item { padding: 10px 12px; border: 1px solid #e5e7eb; border-radius: 4px; text-align: center; }
+    .traction-item .label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #6b7280; margin-bottom: 3px; }
+    .traction-item .value { font-size: 14.5px; font-weight: 600; color: #1a1a2e; }
+    .inv-divider { height: 1px; background: #e5e7eb; margin: 16px 0; }
+    .ask-box { border: 2px solid #1a1a2e; padding: 20px 24px; border-radius: 6px; margin: 16px 0 8px; }
+    .ask-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .ask-box p { font-size: 16px; color: #374151; margin-bottom: 4px; }
+    .ask-box strong { color: #1a1a2e; }
+    .milestone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 10px; }
+    .milestone { font-size: 14.5px; color: #4a5568; padding-left: 14px; position: relative; }
+    .milestone::before { content: '>'; position: absolute; left: 0; color: #1a1a2e; font-weight: 700; }
+    .inv-footer { margin-top: 20px; padding-top: 16px; border-top: 1px solid #e5e7eb; text-align: center; font-size: 11.5px; color: #6b7280; }
+    .inv-footer a { color: #1a1a2e; text-decoration: none; font-weight: 500; }
+    .crispr-box { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1.5px solid #d97706; border-radius: 6px; padding: 14px 18px; margin: 12px 0; font-size: 16px; font-weight: 600; color: #78350f; line-height: 1.5; }
+    .who-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 14px 18px; margin-bottom: 20px; }
+    .who-box p { font-size: 14.5px; line-height: 1.65; margin: 0; }
+    .who-price { font-size: 15px; font-weight: 600; color: #92400e; margin: 8px 0 0; }
+    @media (max-width: 640px) { .inv { padding: 24px 20px; } .traction-row { grid-template-columns: 1fr 1fr; } .milestone-grid { grid-template-columns: 1fr; } }
+  </style>
+
+  <div class="inv">
+    <div class="inv-header">
+      <h1>Univault Technologies</h1>
+      <div class="tagline">Certifying AI fairness for healthcare — without exposing code or patient data</div>
+    </div>
+
+    <div class="inv-section">
+      <div class="inv-section-title">The Problem</div>
+      <p>Every company shipping AI in healthcare faces: <strong>"Prove your AI is fair."</strong> The EU AI Act threatens <strong>7% of global revenue</strong> in fines. The FDA is mandating demographic reporting. CMS is tying reimbursement to equity. Proving compliance costs millions, takes months, and requires exposing proprietary code and patient data.</p>
+      <p>Genetic risk scores are <strong>78% less accurate</strong> for non-European patients. Optum was sued after <em>Science</em> proved systematic bias. <strong>The compliance gap is real, growing, and unfilled.</strong></p>
+    </div>
+
+    <div class="inv-divider"></div>
+
+    <div class="inv-section">
+      <div class="inv-section-title">The Solution</div>
+      <p><strong>Paragon Verify</strong> — the first platform certifying health AI across accuracy, privacy, and fairness, without requiring access to proprietary code or patient data.</p>
+      <div class="inv-callout">
+        <strong>Breakthrough:</strong> A single architectural parameter controls AI fairness <span class="number">21x</span> more effectively than the industry standard. One number to inspect, verification in 30 seconds per model. Validated across genomics, brain signals, 6 clinical traits, and 5 ancestral populations.
+      </div>
+      <div class="crispr-box">
+        "The patents on CRISPR — the gene-editing tool that won the 2020 Nobel Prize — generated over $1 billion in licensing revenue because every gene therapy required the mechanism. This is an analogous dynamic — <span style="color: #92400e; font-weight: 700;">every AI model shipping to diverse populations needs provable fairness, and we invented and are licensing the only auditable mechanism to deliver it.</span>"
+      </div>
+      <table>
+        <tr><th>Pillar</th><th>What We Verify</th><th>Regulation</th></tr>
+        <tr><td><strong>Accuracy</strong></td><td>Subject-level splits, leakage detection, NeurIPS-grade benchmarking</td><td>FDA SaMD</td></tr>
+        <tr><td><strong>Privacy</strong></td><td>Membership inference, model inversion, attribute inference attacks</td><td>HIPAA / GDPR</td></tr>
+        <tr><td><strong>Fairness</strong></td><td>Bottleneck parameter audit — transparent, reproducible, 30 seconds</td><td>EU AI Act / CMS</td></tr>
+      </table>
+    </div>
+
+    <div class="who-box">
+      <div class="inv-section-title" style="color: #92400e;">Who Needs This — And What They'd Pay</div>
+      <p><strong>Genomics:</strong> 23andMe ($299M), Tempus ($700M), Myriad ($851M), Illumina ($4.5B), Invitae — all ship ancestry-biased risk scores today. <strong>Health AI:</strong> Epic ($4.6B), Google Health, Aidoc, Paige — FDA now mandates demographic performance reporting. <strong>Insurance:</strong> Optum/UnitedHealth ($372B), Lemonade — Optum already sued for $100M+ algorithmic bias. <strong>Lending:</strong> FICO ($1.7B), Zest AI, JPMorgan ($158B) — under active CFPB disparate impact enforcement. <strong>Hiring:</strong> HireVue, Workday ($7.3B), Harver — NYC LL144 mandates annual bias audits. <strong>Neurotech:</strong> Neuralink, Emotiv, Kernel — subject-invariant decoding required for BCI deployment.</p>
+      <p class="who-price">Per-model verification licenses range $50K–$5M/year depending on company size — representing a $10–30M ARR opportunity from the first 10 enterprise customers alone.</p>
+    </div>
+
+    <div class="inv-section">
+      <div class="inv-section-title">Business Model</div>
+      <p><strong>Revenue:</strong> Per-model verification · Annual re-certification · Platform licensing (embedded in deployment pipelines) · Network fees from third-party builders. Every new AI regulation increases demand with no new product needed.</p>
+    </div>
+
+    <div class="inv-divider"></div>
+
+    <div class="inv-section">
+      <div class="inv-section-title">Traction</div>
+      <div class="traction-row">
+        <div class="traction-item"><div class="label">Platform</div><div class="value">Live — 6 models verified</div></div>
+        <div class="traction-item"><div class="label">Clinical</div><div class="value">Pilot with infectious disease clinic</div></div>
+        <div class="traction-item"><div class="label">IP</div><div class="value">8 patents · 500+ claims</div></div>
+        <div class="traction-item"><div class="label">Stage</div><div class="value">Bootstrapped · pre-seed</div></div>
+      </div>
+    </div>
+
+    <div class="inv-divider"></div>
+
+    <div class="inv-section">
+      <div class="inv-section-title">Team</div>
+      <p><strong>Philip Phuong Tran, Founder.</strong> Bootstrapped the entire stack: 8 patents, 5 papers, 3 production models, clinical deployment, and the verification platform.</p>
+      <p><strong>Advisory:</strong> Patent counsel (SV IP firm, Cambridge PhD genetics) · Clinical medicine (infectious disease) · Corporate law · University faculty (cross-ancestry genomics)</p>
+    </div>
+
+    <div class="ask-box">
+      <h3>Pre-Seed Round</h3>
+      <p><strong>Raising $1.5M pre-seed.</strong> Bootstrapped to this point — platform, patents, clinical pilot. This round turns proven technology into a business.</p>
+      <div class="milestone-grid">
+        <div class="milestone">First 3 paying enterprise customers</div>
+        <div class="milestone">FDA pre-submission filing</div>
+        <div class="milestone">2 key hires: engineering + regulatory</div>
+        <div class="milestone">Core patents: provisional to utility</div>
+      </div>
+    </div>
+
+    <div class="inv-footer">
+      <p>Patent Pending · Univault Technologies LLC · <a href="mailto:phil@paragondao.org">phil@paragondao.org</a> · <a href="https://paragondao.org/verify">paragondao.org/verify</a> · <a href="https://haven.riif.com/breathe">haven.riif.com</a></p>
+    </div>
+  </div>
+</BaseLayout>

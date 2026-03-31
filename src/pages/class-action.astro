@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Homo Sapiens v. The Designer — Class Action Complaint"
+  description="The largest class action in the history of the Observable Universe. 8 billion plaintiffs. 300,000 years of damages. No user manual."
+  ogTitle="Homo Sapiens v. The Designer — Class Action Complaint"
+  ogDescription="8 billion plaintiffs sue The Designer for shipping the human body without a user manual. Filed April 1, 2026. The biomechanics are real."
+  ogUrl="https://content.riif.com/class-action"
+>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+    .ca-page { max-width: 8.5in; margin: 0 auto; padding: 48px 56px; background: #faf8f4; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13.5pt; line-height: 1.65; color: #2c2420; }
+    .court-header { text-align: center; padding: 24px 40px 18px; border-bottom: 2.5px solid #8b7355; margin-bottom: 18px; position: relative; }
+    .court-jurisdiction { font-family: 'Courier Prime', monospace; font-size: 9pt; letter-spacing: 0.35em; color: #8b7355; text-transform: uppercase; margin-bottom: 12px; }
+    .court-name { font-size: 20pt; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+    .court-division { font-size: 11pt; font-style: italic; color: #6b5b4a; }
+    .filed-stamp { position: absolute; top: -12px; right: -20px; border: 2.5px solid #a03020; border-radius: 3px; padding: 5px 10px; transform: rotate(8deg); font-family: 'Courier Prime', monospace; font-size: 7.5pt; font-weight: 700; color: #a03020; text-align: center; line-height: 1.25; background: rgba(250, 248, 244, 0.95); }
+    .caption { display: flex; justify-content: space-between; margin: 16px 0 12px; padding: 0 8px; }
+    .caption-left { flex: 1.2; }
+    .caption-right { text-align: right; font-family: 'Courier Prime', monospace; font-size: 10pt; color: #5a4a3a; line-height: 1.6; }
+    .caption-label { font-family: 'Courier Prime', monospace; font-size: 8.5pt; letter-spacing: 0.2em; color: #8b7355; text-transform: uppercase; margin-bottom: 2px; }
+    .caption-name { font-size: 16pt; font-weight: 700; margin-bottom: 2px; }
+    .caption-detail { font-size: 10.5pt; font-style: italic; color: #6b5b4a; }
+    .v-marker { font-size: 24pt; font-weight: 700; font-style: italic; margin: 8px 0; }
+    .section-header { font-family: 'Courier Prime', monospace; font-size: 10pt; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; border-bottom: 1.5px solid #8b7355; padding-bottom: 6px; margin: 32px 0 16px; }
+    .section-num { color: #8b7355; margin-right: 12px; }
+    .complaint-title { text-align: center; margin: 16px 0 4px; }
+    .complaint-title h2 { font-size: 22pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .complaint-subtitle { font-size: 12pt; font-style: italic; color: #6b5b4a; text-align: center; margin-bottom: 14px; }
+    .scales { text-align: center; font-size: 16pt; color: #8b7355; margin: 16px 0; letter-spacing: 0.5em; }
+    .ca-page p { margin-bottom: 12px; text-align: justify; hyphens: auto; }
+    .count { margin: 16px 0 12px 24px; }
+    .count-num { font-family: 'Courier Prime', monospace; font-size: 10pt; color: #8b7355; font-weight: 700; vertical-align: super; margin-right: 8px; }
+    .count-title { font-weight: 700; text-decoration: underline; text-decoration-color: #8b7355; text-underline-offset: 3px; }
+    .exhibit { background: #f3efe8; border: 1px solid #d4c9b8; padding: 20px 28px; margin: 16px 0; border-radius: 2px; }
+    .exhibit-header { font-family: 'Courier Prime', monospace; font-size: 8.5pt; letter-spacing: 0.2em; color: #8b7355; text-transform: uppercase; border-bottom: 1px solid #c4b9a8; padding-bottom: 6px; margin-bottom: 12px; }
+    .exhibit p { font-style: italic; color: #4a3f34; font-size: 12.5pt; }
+    .defect-item { margin: 8px 0; font-style: italic; color: #4a3f34; font-size: 12.5pt; }
+    .defect-label { font-weight: 700; font-style: normal; text-decoration: underline; text-decoration-style: wavy; text-decoration-color: #8b7355; text-underline-offset: 3px; }
+    .relief-box { background: #f3efe8; border: 1.5px solid #8b7355; padding: 24px 32px; margin: 16px 0; border-radius: 2px; }
+    .relief-box .relief-header { font-size: 13pt; font-weight: 700; font-style: italic; margin-bottom: 12px; }
+    .relief-item { margin: 10px 0 10px 24px; position: relative; }
+    .relief-marker { font-family: 'Courier Prime', monospace; font-size: 10pt; color: #8b7355; position: absolute; left: -24px; }
+    .signature { display: flex; justify-content: space-between; margin: 40px 0 20px; padding-top: 20px; }
+    .sig-firm { font-size: 16pt; font-style: italic; border-bottom: 1px solid #8b7355; padding-bottom: 4px; margin-bottom: 8px; }
+    .sig-detail { font-family: 'Courier Prime', monospace; font-size: 9pt; color: #6b5b4a; line-height: 1.6; }
+    .sig-right { text-align: right; font-family: 'Courier Prime', monospace; font-size: 9pt; color: #6b5b4a; line-height: 1.8; }
+    .sig-quote { font-family: 'Cormorant Garamond', serif; font-size: 13pt; font-style: italic; margin-top: 8px; }
+    .april-footer { border: 2px dashed #8b7355; padding: 20px 28px; margin: 32px 0 0; text-align: center; background: #f7f3ec; }
+    .april-footer h3 { font-size: 16pt; color: #8b7355; margin-bottom: 8px; }
+    .april-footer p { font-family: 'Courier Prime', monospace; font-size: 10pt; color: #5a4a3a; text-align: center; margin-bottom: 6px; }
+    .april-footer .links { font-family: 'Courier Prime', monospace; font-size: 10pt; color: #8b7355; margin-top: 10px; }
+    .breathe-cta { display: inline-block; margin-top: 14px; font-family: 'Courier Prime', monospace; font-size: 12pt; color: #2c2420; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .breathe-cta:hover { color: #8b7355; }
+    @media (max-width: 640px) { .ca-page { padding: 24px 20px; } .caption { flex-direction: column; gap: 12px; } .caption-right { text-align: left; } .signature { flex-direction: column; gap: 16px; } .sig-right { text-align: left; } }
+  </style>
+
+  <div class="ca-page">
+    <div class="court-header">
+      <div class="filed-stamp">FILED<br>APRIL 1,<br>2026<br>UNIVERSE<br>SUPREME<br>COURT</div>
+      <div class="court-jurisdiction">Intergalactic Jurisdiction &middot; Est. 13.8 Billion BCE</div>
+      <div class="court-name">Supreme Court of the Observable Universe</div>
+      <div class="court-division">Division of Biological Engineering Disputes &amp; Undisclosed Design Defects</div>
+    </div>
+
+    <div class="caption">
+      <div class="caption-left">
+        <div class="caption-label">Plaintiffs</div>
+        <div class="caption-name">HOMO SAPIENS SAPIENS, et al.</div>
+        <div class="caption-detail">All 8,000,000,000+ members, retroactive to 300,000 BCE</div>
+        <div class="v-marker">v.</div>
+        <div class="caption-label">Defendant</div>
+        <div class="caption-name">THE DESIGNER</div>
+        <div class="caption-detail">Identity unknown; last seen approximately 300,000 BCE; no registered agent; no Delaware C-Corp on file</div>
+      </div>
+      <div class="caption-right">
+        Case No. 0001-UNIVERSE<br><br>
+        FILED: April 1, 2026<br>
+        JURY TRIAL DEMANDED<br><br>
+        Represented by:<br>
+        <strong>LUMBAR, SACRUM &amp; ASSOCIATES</strong><br>
+        Attorneys for All of Humanity<br>
+        Universe at Large
+      </div>
+    </div>
+
+    <div class="scales">&midast; &diams; &midast;</div>
+
+    <div class="complaint-title"><h2>Class Action Complaint</h2></div>
+    <div class="complaint-subtitle">For Negligent Design, Failure to Disclose Material Design Defects,<br>and Willful Omission of User Documentation</div>
+
+    <div class="section-header"><span class="section-num">I.</span>Nature of the Action</div>
+    <p>Plaintiffs, being the entire population of <em>Homo sapiens sapiens</em> &mdash; approximately eight billion (8,000,000,000) individuals, with additional claims asserted on behalf of all deceased members of the species retroactive to 300,000 BCE &mdash; hereby bring this class action against Defendant THE DESIGNER for knowingly deploying a bipedal biological platform containing undisclosed <strong>design defects</strong>, without providing any user manual, warranty documentation, or transparency regarding <strong>patent design flaws inextricably intertwined with the product itself</strong>.</p>
+    <p>This is the largest class action in the history of jurisprudence &mdash; and, to Plaintiffs' knowledge, the largest in the Observable Universe &mdash; measured by plaintiff count, duration of harm, and sheer accumulated suffering attributable to Defendant's failure to ship proper documentation alongside the product.</p>
+
+    <div class="section-header"><span class="section-num">II.</span>Jurisdiction &amp; Venue</div>
+    <div class="count"><span class="count-num">1.</span> This Court has jurisdiction over all matters pertaining to biological engineering decisions made within the Observable Universe, including but not limited to the Milky Way Galaxy, Solar System, and Planet Earth (hereinafter "the Deployment Environment").</div>
+    <div class="count"><span class="count-num">2.</span> Venue is proper in this Court as the alleged negligence was committed across all jurisdictions simultaneously, rendering no single earthly court competent to adjudicate the full scope of harm.</div>
+    <div class="count"><span class="count-num">3.</span> Defendant has no known registered agent, no Delaware C-Corp filing, no LinkedIn profile, and has not responded to any communication in approximately 300,000 years. Service by publication is therefore requested.</div>
+
+    <div class="section-header"><span class="section-num">III.</span>The Design Defect &mdash; Technical Background</div>
+    <p>Plaintiffs allege that Defendant made a deliberate architectural decision &mdash; hereinafter referred to as "The Bipedal Pivot" &mdash; which, while conferring certain competitive advantages, introduced a cascade of undisclosed structural design defects inextricably intertwined with the product itself, which Defendant failed to document, disclose, or mitigate.</p>
+
+    <div class="exhibit">
+      <div class="exhibit-header">Exhibit A &mdash; The Quadruped Baseline Architecture</div>
+      <p>Prior to The Bipedal Pivot, Defendant's reference design ("Quadrupedal Model") featured horizontal spinal loading, organs suspended freely from the spine like garments on a clothesline, passive organ massage via locomotion, diaphragm operating on a horizontal plane, and no requirement for conscious exercise to maintain organ function.</p>
+      <p style="margin-top: 8px;">This architecture performed reliably for hundreds of millions of years across thousands of species. No class action has ever been filed against it.</p>
+    </div>
+
+    <div class="exhibit">
+      <div class="exhibit-header">Exhibit B &mdash; The Bipedal Pivot &amp; Its Undisclosed Consequences</div>
+      <p style="font-style: normal; margin-bottom: 12px;">Defendant unilaterally introduced vertical bipedalism without backward compatibility, changelog documentation, or user consent. The consequences, which Defendant knew or reasonably should have known, include:</p>
+      <div class="defect-item"><span class="defect-label">(a) Vertical Organ Stacking:</span> Internal organs, previously suspended horizontally, are now compressed vertically by gravitational force, stacked upon one another like an unsecured filing cabinet on a ship in a storm.</div>
+      <div class="defect-item"><span class="defect-label">(b) Loss of Passive Organ Massage:</span> The passive peristaltic and lymphatic benefits conferred by quadrupedal locomotion were silently deprecated with no replacement mechanism provided.</div>
+      <div class="defect-item"><span class="defect-label">(c) Pelvic Floor Vulnerability:</span> The pelvic floor, now bearing the full gravitational load of the abdominal stack, was not proportionally reinforced. The relevant bug report remains unacknowledged.</div>
+      <div class="defect-item"><span class="defect-label">(d) Lumbar Stress:</span> The lumbar spine, designed for horizontal loading, was repurposed as a vertical compression column without any architectural review.</div>
+      <div class="defect-item"><span class="defect-label">(e) Mandatory Conscious Exercise Requirement:</span> Most critically &mdash; Defendant introduced a requirement that users must consciously and deliberately exercise to simulate the passive biomechanical functions previously handled automatically. This requirement was mentioned nowhere in any product documentation.</div>
+    </div>
+
+    <div class="section-header"><span class="section-num">IV.</span>Counts of Negligence</div>
+    <div class="count"><span class="count-num">4.</span> <span class="count-title">Count I &mdash; Failure to Provide User Manual.</span> Defendant shipped approximately 8 billion units of the Human Body platform without enclosing any documentation. No quick-start guide. No maintenance schedule. No warning labels. No API documentation. The only available reference material was transmitted orally through indigenous traditions, which Defendant allowed to be systematically deprecated by the Industrial Revolution without providing a digital backup.</div>
+    <div class="count"><span class="count-num">5.</span> <span class="count-title">Count II &mdash; Undisclosed Design Defect.</span> Defendant knowingly traded organ suspension efficiency for upright posture and freed hands, enabling tool use, language, and civilization. While Plaintiffs acknowledge these benefits, Defendant had an affirmative duty to disclose the tradeoff in writing. The phrase "by the way, you'll need to exercise regularly or your organs will malfunction" does not appear anywhere in the product.</div>
+    <div class="count"><span class="count-num">6.</span> <span class="count-title">Count III &mdash; Negligent Hip Joint Documentation.</span> The hip joint, when properly mobilized in the vertical plane, unlocks a kinetic chain of extraordinary biomechanical efficiency &mdash; as recently discovered by Plaintiff Philip Tr&#7847;n L&#432;u-Ph&#432;&#417;ng, age 52, during tennis serve practice. The fact that this feature exists and was not documented constitutes negligent concealment of a material product capability. Plaintiff had to discover this himself through meditation and self-experimentation.</div>
+    <div class="count"><span class="count-num">7.</span> <span class="count-title">Count IV &mdash; Snoring Without Explanation.</span> Defendant installed a snoring mechanism that activates under fatigue without explaining to users that it can serve as a consciousness-awareness marker during hypnagogic meditation states. This feature, while potentially useful, was undocumented and caused Plaintiffs decades of confusion and spousal complaints.</div>
+    <div class="count"><span class="count-num">8.</span> <span class="count-title">Count V &mdash; Global Health Damages.</span> As a direct and proximate result of Defendant's failure to disclose the conscious exercise requirement, the global population has accumulated: chronic back pain (estimated 619 million cases), obesity-related illness, pelvic floor dysfunction, hernias, varicose veins, acid reflux, and a $10 trillion annual global healthcare expenditure &mdash; all of which would have been substantially mitigated by a single-page insert reading: <em>"Warning: This body requires daily movement. Sitting for extended periods compresses your organ stack. Please consult your hip joints."</em></div>
+
+    <div class="section-header"><span class="section-num">V.</span>Anticipated Defense Arguments &amp; Rebuttal</div>
+    <div class="count"><span class="count-num">9.</span> <span class="count-title">Defense: Assumption of Risk.</span> Defendant may argue Plaintiffs accepted Terms &amp; Conditions at birth. Plaintiffs note that no opt-out mechanism was provided, no T&amp;C was presented in readable format, and consent cannot be obtained from an entity that did not yet exist at time of contracting. This argument shall fail.</div>
+    <div class="count"><span class="count-num">10.</span> <span class="count-title">Defense: Documentation Was Provided (Oral Tradition).</span> Defendant may argue that indigenous movement practices, yoga texts, and meditation traditions constituted adequate documentation. Plaintiffs respond that oral documentation with no version control, no accessibility compliance, and a systematic deprecation rate of approximately 95% over the past 200 years does not meet the minimum standard of product disclosure.</div>
+    <div class="count"><span class="count-num">11.</span> <span class="count-title">Defense: Product Performs as Designed.</span> Defendant may note 300,000 years of uptime, self-replication, and cross-climate compatibility. Plaintiffs acknowledge these features. We are not disputing that the product works. We are disputing that users were told how to use it properly.</div>
+    <div class="count"><span class="count-num">12.</span> <span class="count-title">Defense: Statute of Limitations.</span> Defendant may argue claims are time-barred after 300,000 years. Plaintiffs invoke the Discovery Rule &mdash; the limitations period does not begin until a reasonable person could have discovered the defect. Given that the majority of humanity still does not know about vertical hip joint mobilization or organ compression mechanics, the clock has arguably not yet started for most of the class.</div>
+
+    <div class="section-header"><span class="section-num">VI.</span>Relief Requested</div>
+    <div class="relief-box">
+      <div class="relief-header">WHEREFORE, Plaintiffs respectfully request that this Court:</div>
+      <div class="relief-item"><span class="relief-marker">(a)</span> Order Defendant to immediately issue a comprehensive User Manual for the Human Body, including but not limited to: hip joint mobilization protocols, organ decompression exercises, breathing and diaphragm mechanics, sleep architecture and hypnagogic state guidance, and a plain-language explanation of the quadruped-to-biped tradeoff;</div>
+      <div class="relief-item"><span class="relief-marker">(b)</span> Award compensatory damages for 300,000 years of accumulated chronic back pain, hernias, pelvic floor dysfunction, and preventable obesity-related illness, in an amount to be determined at trial but estimated at more money than has ever existed;</div>
+      <div class="relief-item"><span class="relief-marker">(c)</span> Award punitive damages for the deliberate concealment of the hip joint vertical mobilization feature, which could have materially improved athletic performance and quality of life for the entire class;</div>
+      <div class="relief-item"><span class="relief-marker">(d)</span> Order Defendant to appear before this Court and explain the snoring mechanism in detail, with particular attention to its role as a hypnagogic consciousness marker;</div>
+      <div class="relief-item"><span class="relief-marker">(e)</span> In lieu of monetary damages, accept the following as partial settlement: the open-source publication of a comprehensive Human Body Operations Manual, currently being drafted by Plaintiff Philip Tr&#7847;n L&#432;u-Ph&#432;&#417;ng through the ParagonDAO platform, incorporating biosignal AI, breathing analysis, sleep architecture, and coherence-based wellness protocols &mdash; which is, for the record, exactly the documentation Defendant should have shipped 300,000 years ago.</div>
+    </div>
+
+    <div class="section-header"><span class="section-num">VII.</span>Jury Demand</div>
+    <p>Plaintiffs demand a trial by jury of their peers. Given that the entire human population is a member of the plaintiff class, Defendant will need to source jurors from elsewhere. Plaintiffs suggest dolphins, who have retained sufficient hippocampal function to evaluate complex biomechanical negligence claims and who are, notably, <em>not</em> bipedal.</p>
+
+    <div class="scales">&midast; &diams; &midast;</div>
+
+    <div class="signature">
+      <div class="sig-left">
+        <div class="sig-firm">Lumbar, Sacrum &amp; Associates</div>
+        <div class="sig-detail">
+          LUMBAR, SACRUM & ASSOCIATES<br>
+          Attorneys for All of Humanity<br>
+          The Observable Universe<br>
+          Filed: April 1, 2026
+        </div>
+      </div>
+      <div class="sig-right">
+        Respectfully submitted on behalf of<br>
+        8,000,000,000+ Plaintiffs<br>
+        and all ancestors retroactive<br>
+        to 300,000 BCE<br>
+        <div class="sig-quote">"We just want the manual."</div>
+      </div>
+    </div>
+
+    <div class="april-footer">
+      <h3>&midast; Happy April Fool's Day &midast;</h3>
+      <p>This document is satirical. However, the biomechanics are real.</p>
+      <p>Your hip joints work better when mobilized vertically. Your organs appreciate movement.<br>You do need to exercise. The Designer left no manual. <strong>We are writing it.</strong></p>
+      <a class="breathe-cta" href="https://haven.riif.com/breathe?utm_source=class-action&utm_medium=web&utm_campaign=april1" data-track="class-action-breathe-cta">Check your breathing right now — 30 seconds, free, no signup &rarr;</a>
+      <div class="links">haven.riif.com/breathe &middot; paragondao.org</div>
+    </div>
+  </div>
+</BaseLayout>
