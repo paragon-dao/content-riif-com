@@ -47,6 +47,9 @@ const resolvedOgDesc = ogDescription || description
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
+
+    <!-- Analytics -->
+    <script defer src="https://mirrorai-api.amitacompany.workers.dev/t.js" data-site="sb_content_riif_01"></script>
   </head>
   <body class="bg-white text-slate-800">
     <slot />
