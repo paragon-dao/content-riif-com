@@ -184,6 +184,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <div class="cta-row">
         <a class="cta-btn cta-primary" href="https://haven.riif.com?utm_source=class-action&utm_medium=web&utm_campaign=april1" data-track="class-action-cta">Read the first page of your manual &rarr;</a>
       </div>
+      <div style="margin-top: 14px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <a href="/HomoSapiens_v_TheDesigner_ClassAction.pdf" download class="cta-btn cta-secondary" style="font-size: 9.5pt; padding: 8px 16px;" onclick="if(window.sb&&window.sb.track)window.sb.track('pdf_download')">Download full complaint (PDF)</a>
+        <button onclick="if(navigator.share){navigator.share({title:'Homo Sapiens v. The Designer',text:'The largest class action in the Observable Universe. 8 billion plaintiffs.',url:window.location.href})}else{navigator.clipboard.writeText(window.location.href);this.textContent='Link copied!'}" class="cta-btn cta-secondary" style="font-size: 9.5pt; padding: 8px 16px; cursor: pointer;">Help serve 8 billion defendants</button>
+      </div>
       <div class="signup-box">
         <p style="font-size: 10pt; color: #5a4a3a; margin-bottom: 8px;">Get updates on the case — and the manual as we write it.</p>
         <form class="signup-form" id="case-signup">
