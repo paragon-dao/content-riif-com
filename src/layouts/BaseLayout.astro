@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = 'Research, technical documentation, and articles from the RIIF ecosystem.',
+  description = 'Published research, technical documentation, and architecture papers from Paragon Biosignals.',
   ogTitle,
   ogDescription,
   ogUrl,
@@ -38,20 +38,33 @@ const resolvedOgDesc = ogDescription || description
     <meta property="og:description" content={resolvedOgDesc} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:site_name" content="RIIF" />
+    <meta property="og:site_name" content="RIIF Research" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={resolvedOgTitle} />
     <meta name="twitter:description" content={resolvedOgDesc} />
 
+    <meta name="theme-color" content="#0D9488" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
 
+    <!-- Theme: apply before paint -->
+    <script is:inline>
+      (function() {
+        var t = localStorage.getItem('content-theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <!-- Analytics -->
     <script defer src="https://mirrorai-api.amitacompany.workers.dev/t.js" data-site="sb_content_riif_01"></script>
   </head>
-  <body class="bg-white text-slate-800">
+  <body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors">
     <slot />
   </body>
 </html>

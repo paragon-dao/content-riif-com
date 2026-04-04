@@ -1,0 +1,70 @@
+---
+// Shared nav for content.riif.com — mobile responsive + dark mode
+---
+<nav class="border-b border-slate-200 dark:border-slate-700 px-4 py-3 sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm">
+  <div class="max-w-3xl mx-auto flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <img src="/riif-logo.svg" alt="Paragon" class="h-7" />
+      <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 hidden sm:inline">RIIF Research</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden sm:flex items-center gap-5 text-sm">
+      <a href="/blog" class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors font-medium">Papers</a>
+      <a href="https://paragonbiosignals.com" class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Paragon</a>
+      <a href="https://haven.riif.com" class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Haven</a>
+      <button id="theme-toggle" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" aria-label="Toggle theme">
+        <svg id="theme-sun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg id="theme-moon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile: theme toggle + hamburger -->
+    <div class="flex sm:hidden items-center gap-2">
+      <button id="theme-toggle-mobile" class="p-1.5 rounded-lg text-slate-400" aria-label="Toggle theme">
+        <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" class="p-1.5 text-slate-600 dark:text-slate-300" aria-label="Menu">
+        <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-slate-200 dark:border-slate-700 mt-3 pt-3 pb-2">
+    <div class="flex flex-col gap-1 max-w-3xl mx-auto">
+      <a href="/blog" class="py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300">Papers</a>
+      <a href="https://paragonbiosignals.com" class="py-2.5 text-sm text-slate-500 dark:text-slate-400">Paragon Biosignals</a>
+      <a href="https://haven.riif.com" class="py-2.5 text-sm text-slate-500 dark:text-slate-400">Haven Phone</a>
+      <a href="https://paragondao.org" class="py-2.5 text-sm text-slate-500 dark:text-slate-400">ParagonDAO</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  });
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu?.classList.add('hidden');
+    iconOpen?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+  }));
+
+  // Theme toggle
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('content-theme', isDark ? 'dark' : 'light');
+  }
+  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+</script>
