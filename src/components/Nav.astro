@@ -43,28 +43,34 @@
   </div>
 </nav>
 
-<script>
-  // Mobile menu toggle
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
-  btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    iconOpen?.classList.toggle('hidden');
-    iconClose?.classList.toggle('hidden');
-  });
-  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menu?.classList.add('hidden');
-    iconOpen?.classList.remove('hidden');
-    iconClose?.classList.add('hidden');
-  }));
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var iconOpen = document.getElementById('icon-open');
+    var iconClose = document.getElementById('icon-close');
+    if (btn) btn.addEventListener('click', function() {
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+    if (menu) menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
 
-  // Theme toggle
-  function toggleTheme() {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('content-theme', isDark ? 'dark' : 'light');
-  }
-  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
+    // Theme toggle
+    function toggleTheme() {
+      var isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('content-theme', isDark ? 'dark' : 'light');
+    }
+    var t1 = document.getElementById('theme-toggle');
+    var t2 = document.getElementById('theme-toggle-mobile');
+    if (t1) t1.addEventListener('click', toggleTheme);
+    if (t2) t2.addEventListener('click', toggleTheme);
+  });
 </script>
