@@ -71,6 +71,7 @@ const resolvedOgDesc = ogDescription || description
 
 <style is:global>
   @import "tailwindcss";
+  @custom-variant dark (&:where(.dark, .dark *));
 
   *, *::before, *::after {
     box-sizing: border-box;
