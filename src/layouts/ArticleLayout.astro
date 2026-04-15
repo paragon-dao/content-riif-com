@@ -337,8 +337,7 @@ const jsonLd = {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   }
 
-  .article-body img + em,
-  .article-body p > em:only-child {
+  .article-body img + em {
     display: block;
     text-align: center;
     font-family: 'Inter', -apple-system, sans-serif;
@@ -348,6 +347,18 @@ const jsonLd = {
     margin: 0.25em auto 2em;
     max-width: 90%;
     font-style: italic;
+  }
+
+  /* Prevent italic book titles / journal names from getting image-caption styling */
+  .article-body li em,
+  .article-body ol em,
+  .article-body ul em {
+    display: inline;
+    text-align: inherit;
+    font-size: inherit;
+    color: inherit;
+    margin: 0;
+    max-width: none;
   }
 
   /* ── Horizontal rules — section dividers ── */
